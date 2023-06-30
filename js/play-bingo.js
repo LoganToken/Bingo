@@ -90,7 +90,7 @@ var bingo = function(bingoList){
 			const slotId = slotElement.id;
 			// each Id is 'slot#', we only want the #
 			const slotIdNumber = slotId.slice(4);
-			const goalName = bingoBoard[slotIdNumber - 1].name;
+			const goalName = bingoBoard[slotIdNumber].name;
 			const selectedRowSlotElement = document.getElementById('selected-slot' + index);
 			selectedRowSlotElement.innerHTML = goalName;
 		});
