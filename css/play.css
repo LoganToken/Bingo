@@ -1,0 +1,117 @@
+body {
+	background: rgb(12, 12, 12);
+	color: white;
+	font-family: Arial;
+	background-size: 100% 100%;
+}
+
+h1 {
+	/*bandaid, will fix later*/
+	margin-top: 200px;
+}
+
+a {
+	color: darkviolet;
+}
+
+#bingo-wrap {
+	height: 800px;
+
+	display: flex;
+	justify-content: center;
+}
+
+#selected-row-column {
+	flex: 1;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#selected-row {
+	margin: 6px;
+
+	display: grid;
+	grid-template-columns: 200px;
+}
+
+#bingo-board-column {
+	flex: 2;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#bingo-board {
+	margin: 6px;
+	
+	display: grid;
+	grid-template-columns: 60px 120px 120px 120px 120px 120px;
+}
+
+#selected-row-label,
+.bingo-board-column-label,
+.bingo-board-row-label {
+	border: 1px solid darkviolet;
+	background-color: rgba(148, 0, 211, 0.1);
+	text-align: center;
+	color: darkviolet;
+	font-weight: bold;
+}
+
+.bingo-board-column-label:hover,
+.bingo-board-row-label:hover {
+	background-color: darkviolet;
+	color: white;
+}
+
+#selected-row-label,
+.bingo-board-column-label,
+#bltr {
+	height: 30px;
+}
+
+.selected-row-square,
+.bingo-board-square {
+	border: 1px solid grey;
+	height: 90px;
+	padding: 6px;
+}
+
+#selected-row-label,
+.selected-row-square,
+.bingo-board-column-label,
+.bingo-board-row-label,
+.bingo-board-square {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.bingo-board-square:hover, 
+.bingo-board-square.hover {
+	background-color: rgba(148, 0, 211, 0.3);}
+
+.green-square {
+	background-color: rgba(0, 255, 0, 0.3);
+}
+
+.green-square:hover, .green-square.hover {
+	background-color: rgba(0, 255, 0, 0.6);
+}
+
+.red-square {
+	background-color: rgba(255, 0, 0, 0.3);
+}
+
+.red-square:hover, .red-square.hover {
+	background-color: rgba(255, 0, 0, 0.6);
+}
+
+#right-sidebar-column {
+	flex: 1;
+	margin: 8px;
+}
