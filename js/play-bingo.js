@@ -1,39 +1,28 @@
-var bingo = function(bingoList){
+const bingo = function(bingoList){
 
 	// Gets information from the URL
 	function gup( name ) {
 		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-		var regexS = "[\\?&]"+name+"=([^&#]*)";
-		var regex = new RegExp( regexS );
-		var results = regex.exec( window.location.href );
-		if(results == null)
+		const regexS = "[\\?&]"+name+"=([^&#]*)";
+		const regex = new RegExp( regexS );
+		const results = regex.exec( window.location.href );
+		if(results === null)
 			 return "";
 		return results[1];
 	}
 
-	var LANG = gup( 'lang' );
-	if (LANG == '') LANG = 'name';
-	var SEED = gup( 'seed' );
-	var MODE = gup( 'mode' );
+	let LANG = gup( 'lang' );
+	if (LANG === '') LANG = 'name';
+	let SEED = gup( 'seed' );
+	let MODE = gup( 'mode' );
 	
 	// if no specified seed, random seed
-	if(SEED == "") return reseedPage(MODE);
-
-	//displays info about the card
-	/*
-	var cardtype = "string";
-	if (MODE == "short") { cardtype = "Short"; } 
-	else if (MODE == "long") { cardtype = "Long"; }
-	else { cardtype = "Normal";	}
-	var results = $("#results");
-	results.append ("<p>SRT Bingo <strong>v1</strong>&emsp;Seed: <strong>" + 
-	SEED + "</strong>&emsp;Card type: <strong>" + cardtype + "</strong></p>");
-	*/
+	if(SEED === "") return reseedPage(MODE);
 
 	//create opts options object
-	var opts = {}
+	const opts = {}
 	opts.seed = SEED
-	var bingoBoard = bingoGenerator(bingoList, opts);
+	const bingoBoard = bingoGenerator(bingoList, opts);
 
 	//populate the bingo board with goals
 	bingoBoard.forEach(function(goal, index) {
