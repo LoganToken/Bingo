@@ -7,7 +7,7 @@ Created on Wed Apr 24 14:48:49 2024
 
 import pandas as pd
 
-dk_df = pd.read_excel('DK rando spreadsheet.xlsx')
+dk_df = pd.read_excel('DK64 Randomizer Bingo Goals.xlsx')
 
 dk_df = dk_df.sort_values(by='Difficulty')
 
