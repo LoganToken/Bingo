@@ -17,7 +17,7 @@ def wrap_in_quotes(content):
     return '"' + content + '"'
 
 def make_js_entry(row):
-    goal_id = row['Id']
+    goal_id = int(row['Id'])
     goal_name = wrap_in_quotes(row['Name'])
     goal_type = row['Type']
     if pd.isnull(goal_type):
@@ -42,7 +42,7 @@ def write_to_js(df, file_path):
     js_content += 'bingoList[1] = [\n'
     for index, row in df.iterrows():
         
-        difficulty = row['Difficulty']
+        difficulty = int(row['Difficulty'])
         if difficulty != current_difficulty:
             js_content += '];\n\n'
             js_content += f'bingoList[{difficulty}] = [\n'
