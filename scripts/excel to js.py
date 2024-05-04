@@ -53,7 +53,7 @@ def write_to_js(df, file_path):
     
     js_content += '];\n\n'
     
-    js_content += 'bingoList[26] = [];\n\n'
+    #js_content += 'bingoList[26] = [];\n\n'
     js_content += 'bingoList["info"] = {version: "v2024.0"};'
     
     with open(file_path, 'w') as file:
