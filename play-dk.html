@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="js/seedrandom-min.js"></script>
 		<script type="text/javascript" src="js/MumboGen2.js"></script>
 		<script type="text/javascript" src="js/play-bingo.js"></script>
+		<script type="text/javascript" src="static/dk64r_descriptions.js"></script>
 		<title>Definitely Not Banjo-Tooie Bingo</title>
 	</head>
 	<body onload="bingo(bingoList);">
@@ -68,7 +69,14 @@
 						
 					</div>
 				</div>
-				<div id="right-sidebar-column"></div>
+				<div id="right-sidebar-column">
+					<div id="right-sidebar-options">
+						Font Size: 
+						<input type="range" id="font-size" min="12" max="28" value="16" style="width: 200px; border: 1px solid #ccc;" aria-label="Adjust font size">
+					</div>
+					<div id="right-sidebar-download-json">For Lrauq: </div>
+					<div id="right-sidebar-goal-info"></div>
+				</div>
 			</div>
 		</main>
 

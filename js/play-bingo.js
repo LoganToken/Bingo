@@ -24,6 +24,9 @@ const bingo = function(bingoList){
 	opts.seed = SEED
 	const bingoBoard = bingoGenerator(bingoList, opts);
 
+	//output board
+	console.log(bingoBoard);
+
 	//populate the bingo board with goals
 	bingoBoard.forEach(function(goal, index) {
 		console.log(goal);
@@ -130,19 +133,70 @@ const bingo = function(bingoList){
 		const bingoSquareId = this.id;
 		const bingoSquareIdNumber = bingoSquareId.slice(4);
 		const goal = bingoBoard[bingoSquareIdNumber];
-		const rightSidebarHtml = `
-			<h1>${goal.name}</h1>
-			<p>Difficulty: (insert difficulty number)</p>
-			<a href="https://docs.google.com/document/d/118aFciP66p75XvEi9l4ofZVZQvud-381AzEYN2jXjDQ" target="_blank">
-				Link to Route
-			</a>
-		`;
 
-		const rightSidebarElement = document.getElementById('right-sidebar-column');
-		rightSidebarElement.innerHTML = rightSidebarHtml;
+		//tooie stuff
+		// const rightSidebarHtml = `
+		// 	<h1>${goal.name}</h1>
+		// 	<p>Difficulty: ${goal.difficulty}</p>
+		// 	<a href="https://docs.google.com/document/d/118aFciP66p75XvEi9l4ofZVZQvud-381AzEYN2jXjDQ" target="_blank">
+		// 		Link to Route
+		// 	</a>
+		// `;
+
+		//dk64 stuff
+		const rightSidebarElement = document.getElementById('right-sidebar-goal-info');
+		rightSidebarElement.innerHTML = ""; // clear for repopulation
+
+		const goalInfoElement = document.createElement('div');
+		
+		const goalInfoNameElement = document.createElement('h1');
+		goalInfoNameElement.innerHTML = goal.name;
+		goalInfoElement.appendChild(goalInfoNameElement);
+
+		const goalInfoDifficultyElement = document.createElement('p');
+		goalInfoDifficultyElement.innerHTML = `Difficulty tier: ${goal.difficulty}`;
+		goalInfoElement.appendChild(goalInfoDifficultyElement);
+
+		// rulings stuff is janky right now
+		const ruling = dk64rGoals[goal.id - 1].Rulings;
+		if (ruling){
+			console.log(ruling);
+			const goalInfoRulingselement = document.createElement('p');
+			goalInfoRulingselement.innerHTML = ruling;
+			goalInfoElement.appendChild(goalInfoRulingselement);
+		}
+
+		
+		rightSidebarElement.appendChild(goalInfoElement);
 	}
 
+	// Get the global font size input field
+	const fontSizeInput = document.getElementById('font-size');
 
+	// Add event listener to update font size
+	fontSizeInput.addEventListener('input', (e) => {
+		const fontSize = parseInt(e.target.value, 10);
+		// Update font size of all text elements
+		document.querySelectorAll('.bingo-board-square').forEach((element) => {
+			element.style.fontSize = `${fontSize}px`;
+		});
+	});
+
+	//json download button
+	// Convert the JSON object to a string
+	const jsonData = JSON.stringify(bingoBoard);
+
+	// Create a blob object from the string
+	const blob = new Blob([jsonData], { type: 'application/json' });
+
+	// Create a link element
+	const link = document.createElement('a');
+	link.href = URL.createObjectURL(blob);
+	link.download = 'DK64R_Bingo_Board.json';
+	link.textContent = 'Download JSON';
+
+	const rightSidebarDownloadJsonElement = document.getElementById('right-sidebar-download-json');
+	rightSidebarDownloadJsonElement.appendChild(link);
 }
 
 // Reloads the page with a new seed

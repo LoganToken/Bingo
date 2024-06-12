@@ -54,9 +54,21 @@ def write_to_js(df, file_path):
     js_content += '];\n\n'
     
     #js_content += 'bingoList[26] = [];\n\n'
-    js_content += 'bingoList["info"] = {version: "v2024.0"};'
+    js_content += 'bingoList["info"] = {version: "v2024.0", game: "DK64"};'
     
     with open(file_path, 'w') as file:
         file.write(js_content)
 
-write_to_js(dk_df, "dk_rando.js")
+def write_descriptions_to_json(df, file_path):
+    sorted_df = df.sort_values(by="Id")
+    json_data = sorted_df.to_json(orient='records')
+    print(json_data)
+    
+    with open(file_path, 'w') as file:
+        file.write(json_data)
+
+# Execute to write descriptions json
+write_descriptions_to_json(dk_df, "dk64r_descriptions.json")
+
+# Execute to write bingoList
+#write_to_js(dk_df, "dk_rando.js")
