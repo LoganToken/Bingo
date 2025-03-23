@@ -71,4 +71,4 @@ def write_descriptions_to_json(df, file_path):
 write_descriptions_to_json(dk_df, "dk64r_descriptions.json")
 
 # Execute to write bingoList
-#write_to_js(dk_df, "dk_rando.js")
+write_to_js(dk_df, "dk_rando.js")
